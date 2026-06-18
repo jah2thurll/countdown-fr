@@ -1,0 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html, body{
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#0f172a;
+    color:white;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* glowing background blobs */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.6;
+    animation:move 15s infinite alternate ease-in-out;
+}
+
+body::before{
+    background:#ff4d9d;
+    top:-120px;
+    left:-120px;
+}
+
+body::after{
+    background:#7b2cff;
+    bottom:-120px;
+    right:-120px;
+}
+
+@keyframes move{
+    from{ transform:translate(0,0); }
+    to{ transform:translate(120px,-60px); }
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:1200px;
+    text-align:center;
+}
+
+h1{
+    font-size:4rem;
+    margin-bottom:10px;
+    text-shadow:0 0 25px rgba(255,255,255,.4);
+}
+
+.subtitle{
+    color:rgba(255,255,255,.7);
+    margin-bottom:50px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.card{
+    width:450px;
+    padding:40px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    border-radius:30px;
+
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h2{
+    margin-bottom:30px;
+    font-size:2rem;
+}
+
+.time{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.time p{
+    display:flex;
+    justify-content:space-between;
+
+    padding:15px;
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+    font-size:1.2rem;
+}
+
+span{
+    color:#ffb0ec;
+    font-weight:700;
+    text-shadow:0 0 15px #ffb0ec;
+}
+
+.summary{
+    margin-top:30px;
+    padding:18px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+/* =========================
+   📱 MOBILE FIXES
+========================= */
+
+@media (max-width: 768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
+
+    .cards{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:100%;
+        max-width:380px;
+        padding:25px;
+    }
+
+    .time p{
+        font-size:1rem;
+        padding:12px;
+    }
+
+    .summary{
+        font-size:1.05rem;
+        padding:15px;
+    }
+}
